@@ -1,0 +1,35 @@
+required: ['feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'units', 'license', 'result_type']
+properties:
+  feature:
+    bsonType: 'string'
+    description: 'The hydrologic feature associated with the dataset.'
+  parameter:
+    bsonType: 'string'
+    description: 'The recorded observation parameter.'
+  method:
+    bsonType: 'string'
+    description: 'The way the recorded observation was obtained.'
+  processing_code:
+    bsonType: 'string'
+    description: 'The code associated with the processing state of the recorded observation.'
+  owner:
+    bsonType: 'string'
+    description: 'The operator, owner, and/or producer of the associated data.'
+  aggregation_statistic:
+    bsonType: 'string'
+    description: 'The statistic that defines how the result was calculated. The aggregation statistic is calculated over the time frequency interval associated with the recorded observation.'
+  frequency_interval:
+    bsonType: 'string'
+    description: 'The frequency that the observation was recorded at.'
+  units:
+    bsonType: 'string'
+    description: 'The units of the result.'
+  license:
+    bsonType: 'string'
+    description: 'The legal data license associated with the dataset defined by the operator.'
+  result_type:
+    bsonType: 'string'
+    description: 'The collection where the results will be saved.'
+  properties:
+    bsonType: 'object'
+    description: 'Any additional dataset specific properties.'

@@ -1,0 +1,22 @@
+required: ['geometry', 'virtual_location']
+properties:
+  ref:
+    bsonType: 'string'
+    description: 'The reference identifier used by the associated owner/operator.'
+  name:
+    bsonType: 'string'
+    description: 'The name given by the owner/operator.'
+  osm_id:
+    bsonType: 'int'
+    description: 'The OpenStreetMap ID if one exists.'
+  virtual_location:
+    bsonType: 'bool'
+    description: 'Is the location not a physical location? For example, is this location from a numerical model with gridded output?'
+  geometry:
+    bsonType: 'object'
+    description: 'GeoJson of the geometry location.'
+  properties:
+    bsonType: 'object'
+    description: 'Any additional location and operator specific properties.'
+  modified_date:
+    bsonType: date

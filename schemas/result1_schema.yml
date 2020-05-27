@@ -1,0 +1,21 @@
+required: [location_id, dataset_id, from_date, result]
+properties:
+  location_id:
+    bsonType: 'objectId'
+    description: 'the location id from the location collection.'
+  dataset_id:
+    bsonType: 'objectId'
+    description: 'the dataset id from the dataset collection.'
+  from_date:
+    bsonType: 'date'
+    description: 'The start datetime of the observation.'
+  result:
+    bsonType: [string, int, double, long]
+    description: 'The recorded observation parameter.'
+  censor_code:
+    bsonType: string
+  properties:
+    bsonType: 'object'
+    description: 'Any additional result specific properties.'
+  modified_date:
+    bsonType: date
