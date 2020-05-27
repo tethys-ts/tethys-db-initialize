@@ -10,6 +10,7 @@ import pymongo
 from pymongo import MongoClient
 import yaml
 import json
+import argparse
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -17,9 +18,16 @@ pd.set_option('display.max_rows', 30)
 #############################################
 ### Parameters
 
-base_dir = os.path.realpath(os.path.dirname(__file__))
+# base_dir = os.path.realpath(os.path.dirname(__file__))
+#
+# with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
+#     param = yaml.safe_load(param)
 
-with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
+parser = argparse.ArgumentParser()
+parser.add_argument('yaml_path')
+args = parser.parse_args()
+
+with open(args.yaml_path) as param:
     param = yaml.safe_load(param)
 
 schema_dir = 'schemas'
