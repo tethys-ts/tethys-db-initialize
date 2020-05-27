@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    CACHE_IMAGE: tethys-ts/tethys-db-initialize:$TRAVIS_BRANCH
+    CACHE_IMAGE: tethysts/tethys-db-initialize:$TRAVIS_BRANCH
 
 before_script:
   - docker pull $CACHE_IMAGE || true
