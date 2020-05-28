@@ -6,6 +6,8 @@ COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY mongodb_initialize.py CVs schemas ./
+COPY CVs ./CVs
+COPY schemas ./schemas
+COPY mongodb_initialize.py ./
 
 CMD ["python", "mongodb_initialize.py"]
