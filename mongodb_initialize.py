@@ -18,6 +18,8 @@ pd.set_option('display.max_rows', 30)
 #############################################
 ### Parameters
 
+base_dir = os.path.realpath(os.path.dirname(__file__))
+
 param = os.environ.copy()
 database = param['DATABASE']
 root_user = param['MONGO_INITDB_ROOT_USERNAME']
@@ -29,8 +31,6 @@ root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 # except:
-#     base_dir = os.path.realpath(os.path.dirname(__file__))
-#
 #     with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
 #         param = yaml.safe_load(param)
 #
