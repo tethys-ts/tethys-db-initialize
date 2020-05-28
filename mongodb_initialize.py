@@ -72,7 +72,7 @@ sleep(3)
 ############################################
 ### Initialize the collections, set the schemas, and set the indexes
 
-client = MongoClient(password=root_pass, root_user)
+client = MongoClient(password=root_pass, username=root_user)
 
 db = client[database]
 
