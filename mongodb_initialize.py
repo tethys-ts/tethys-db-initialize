@@ -10,7 +10,7 @@ import pymongo
 from pymongo import MongoClient
 import yaml
 import json
-import argparse
+from time import sleep
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -18,17 +18,25 @@ pd.set_option('display.max_rows', 30)
 #############################################
 ### Parameters
 
-# base_dir = os.path.realpath(os.path.dirname(__file__))
+param = os.environ.copy()
+database = param['DATABASE']
+root_user = param['MONGO_INITDB_ROOT_USERNAME']
+root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+
+# try:
+#     param = os.environ.copy()
+#     database = param['DATABASE']
+#     root_user = param['MONGO_INITDB_ROOT_USERNAME']
+#     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+# except:
+#     base_dir = os.path.realpath(os.path.dirname(__file__))
 #
-# with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
-#     param = yaml.safe_load(param)
-
-parser = argparse.ArgumentParser()
-parser.add_argument('yaml_path')
-args = parser.parse_args()
-
-with open(args.yaml_path) as param:
-    param = yaml.safe_load(param)
+#     with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
+#         param = yaml.safe_load(param)
+#
+#     database = param['DATABASE']
+#     root_user = param['MONGO_INITDB_ROOT_USERNAME']
+#     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
 schema_dir = 'schemas'
 cv_dir = 'CVs'
@@ -59,12 +67,14 @@ ts1_coll = 'time_series_result'
 
 ts1_index1 = [('location_id', 1), ('dataset_id', 1), ('from_date', 1)]
 
+sleep(3)
+
 ############################################
 ### Initialize the collections, set the schemas, and set the indexes
 
-client = MongoClient(param['host'], password=param['root_password'], username=param['root_username'])
+client = MongoClient(password=root_pass, root_user)
 
-db = client[param['database']]
+db = client[database]
 
 print(db.list_collection_names())
 
@@ -139,30 +149,28 @@ print(db.list_collection_names())
 #########################################
 ### Create additional users
 
-for u in param['db_new_users']:
+if ('READER_USERNAME' in param) and ('READER_PASSWORD' in param):
+    user = param['READER_USERNAME']
+    password = param['READER_PASSWORD']
     try:
-        db.command("createUser", u['user'], pwd=u['pwd'], roles=[u['role']])
+        db.command("createUser", user, pwd=password, roles=['read'])
     except:
         print('user already created...trying to update user...')
         try:
-            db.command("updateUser", u['user'], roles=[u['role']])
+            db.command("updateUser", user, roles=['read'])
         except:
             raise ValueError('Could not update user')
 
-for u in param['admin_new_users']:
+if ('RW_USERNAME' in param) and ('RW_PASSWORD' in param):
+    user = param['RW_USERNAME']
+    password = param['RW_PASSWORD']
     try:
-        client['admin'].command("createUser", u['user'], pwd=u['pwd'], roles=[u['role']])
+        db.command("createUser", user, pwd=password, roles=['readWrite'])
     except:
         print('user already created...trying to update user...')
         try:
-            client['admin'].command("updateUser", u['user'], roles=[u['role']])
+            db.command("updateUser", user, roles=['readWrite'])
         except:
             raise ValueError('Could not update user')
-
-client.close()
-
-## Remove original root user
-client = MongoClient(param['host'], password=u['pwd'], username=u['user'])
-client['admin'].command("dropUser", 'root')
 
 client.close()

@@ -12,7 +12,7 @@ services:
     ports:
       - "27017:27017"
   db-initialize:
-    image: tethys-db-initialize:dev
+    image: tethysts/tethys-db-initialize:dev
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
