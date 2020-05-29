@@ -20,23 +20,18 @@ pd.set_option('display.max_rows', 30)
 
 base_dir = os.path.realpath(os.path.dirname(__file__))
 
-param = os.environ.copy()
-database = param['DATABASE']
-root_user = param['MONGO_INITDB_ROOT_USERNAME']
-root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+try:
+    param = os.environ.copy()
+    database = param['DATABASE']
+    root_user = param['MONGO_INITDB_ROOT_USERNAME']
+    root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+except:
+    with open(os.path.join(base_dir, 'parameters.yml')) as param:
+        param = yaml.safe_load(param)
 
-# try:
-#     param = os.environ.copy()
-#     database = param['DATABASE']
-#     root_user = param['MONGO_INITDB_ROOT_USERNAME']
-#     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
-# except:
-#     with open(os.path.join(base_dir, 'parameters-dev.yml')) as param:
-#         param = yaml.safe_load(param)
-#
-#     database = param['DATABASE']
-#     root_user = param['MONGO_INITDB_ROOT_USERNAME']
-#     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+    database = param['DATABASE']
+    root_user = param['MONGO_INITDB_ROOT_USERNAME']
+    root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
 schema_dir = 'schemas'
 cv_dir = 'CVs'
