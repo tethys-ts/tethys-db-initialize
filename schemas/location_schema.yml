@@ -15,6 +15,23 @@ properties:
   geometry:
     bsonType: 'object'
     description: 'GeoJson of the geometry location.'
+    required: [type, coordinates]
+    properties:
+      type:
+        bsonType: string
+      coordinates:
+        bsonType: array
+  altitude:
+    bsonType: 'object'
+    description: 'Altitude of the location with datum.'
+    required: [altitude, datum]
+    properties:
+      altitude:
+        bsonType: double
+      datum:
+        bsonType: string
+      wikidata:
+        bsonType: string
   properties:
     bsonType: 'object'
     description: 'Any additional location and operator specific properties.'
