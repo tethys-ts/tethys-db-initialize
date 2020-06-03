@@ -83,10 +83,12 @@ print(db.list_collection_names())
 with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
     loc1 = yaml.safe_load(yml)
 
-db.create_collection(loc_coll, validator={'$jsonSchema': loc1})
-
-# db[loc_coll].create_index(loc_index1)
-db[loc_coll].create_index(loc_index2, unique=True)
+try:
+    db.create_collection(loc_coll, validator={'$jsonSchema': loc1})
+    # db[loc_coll].create_index(loc_index1)
+    db[loc_coll].create_index(loc_index2, unique=True)
+except:
+    print(loc_coll + ' already created')
 
 ## license collection
 
@@ -97,42 +99,49 @@ db[loc_coll].create_index(loc_index2, unique=True)
 #
 # db[license_coll].create_index(license_index1, unique=True)
 
-## license collection
+## log collection
 
 with open(os.path.join(base_dir, schema_dir, log_yml)) as yml:
     log1 = yaml.safe_load(yml)
 
-db.create_collection(log_coll, validator={'$jsonSchema': log1})
-
-db[log_coll].create_index(log_index1)
+try:
+    db.create_collection(log_coll, validator={'$jsonSchema': log1})
+    db[log_coll].create_index(log_index1)
+except:
+    print(log_coll + ' already created')
 
 ## loc-dataset collection
 
 with open(os.path.join(base_dir, schema_dir, loc_dataset_yml)) as yml:
     loc_dataset1 = yaml.safe_load(yml)
 
-db.create_collection(loc_dataset_coll, validator={'$jsonSchema': loc_dataset1})
-
-db[loc_dataset_coll].create_index(loc_dataset_index1, unique=True)
+try:
+    db.create_collection(loc_dataset_coll, validator={'$jsonSchema': loc_dataset1})
+    db[loc_dataset_coll].create_index(loc_dataset_index1, unique=True)
+except:
+    print(loc_dataset_coll + ' already created')
 
 ## dataset collection
 
 with open(os.path.join(base_dir, schema_dir, dataset_yml)) as yml:
     dataset1 = yaml.safe_load(yml)
 
-db.create_collection(dataset_coll, validator={'$jsonSchema': dataset1})
-
-db[dataset_coll].create_index(dataset_index1, unique=True)
+try:
+    db.create_collection(dataset_coll, validator={'$jsonSchema': dataset1})
+    db[dataset_coll].create_index(dataset_index1, unique=True)
+except:
+    print(dataset_coll + ' already created')
 
 ## time series result collection
 
 with open(os.path.join(base_dir, schema_dir, ts1_yml)) as yml:
     ts1 = yaml.safe_load(yml)
 
-db.create_collection(ts1_coll, validator={'$jsonSchema': ts1})
-
-db[ts1_coll].create_index(ts1_index1, unique=True)
-
+try:
+    db.create_collection(ts1_coll, validator={'$jsonSchema': ts1})
+    db[ts1_coll].create_index(ts1_index1, unique=True)
+except:
+    print(ts1_coll + ' already created')
 
 #########################################
 ### Reference collections
