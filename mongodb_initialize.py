@@ -39,7 +39,7 @@ cv_dir = 'CVs'
 loc_yml = 'location_schema.yml'
 loc_coll = 'location'
 
-# loc_index1 = [('ref', 1)]
+loc_index1 = [('ref', 1)]
 loc_index2 = [('geometry', '2dsphere')]
 
 # license_yml = 'license_schema.yml'
@@ -85,7 +85,7 @@ with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
 
 try:
     db.create_collection(loc_coll, validator={'$jsonSchema': loc1})
-    # db[loc_coll].create_index(loc_index1)
+    db[loc_coll].create_index(loc_index1)
     db[loc_coll].create_index(loc_index2, unique=True)
 except:
     print(loc_coll + ' already created')
