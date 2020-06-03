@@ -1,0 +1,16 @@
+required: ['run_date_start', 'run_date_end', 'modified_date', 'source', 'result']
+properties:
+  run_date_start:
+    bsonType: date
+  run_date_end:
+    bsonType: date
+  modified_date:
+    bsonType: date
+  source:
+    bsonType: 'object'
+  properties:
+    bsonType: 'object'
+  result:
+    bsonType: 'string'
+  comments:
+    bsonType: 'string'

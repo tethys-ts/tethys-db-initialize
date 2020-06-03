@@ -47,6 +47,11 @@ loc_index2 = [('geometry', '2dsphere')]
 #
 # license_index1 = [('operator', 1), ('dataset_id', 1)]
 
+log_yml = 'processing_log_schema.yml'
+log_coll = 'processing_log'
+
+log_index1 = [('run_date_start', 1), ('source', 1)]
+
 dataset_yml = 'dataset_schema.yml'
 dataset_coll = 'dataset'
 
@@ -91,6 +96,15 @@ db[loc_coll].create_index(loc_index2, unique=True)
 # db.create_collection(license_coll, validator={'$jsonSchema': license1})
 #
 # db[license_coll].create_index(license_index1, unique=True)
+
+## license collection
+
+with open(os.path.join(base_dir, schema_dir, log_yml)) as yml:
+    log1 = yaml.safe_load(yml)
+
+db.create_collection(log_coll, validator={'$jsonSchema': log1})
+
+db[log_coll].create_index(log_index1)
 
 ## loc-dataset collection
 
