@@ -73,6 +73,7 @@ sleep(3)
 ### Initialize the collections, set the schemas, and set the indexes
 
 client = MongoClient('db', password=root_pass, username=root_user)
+# client = MongoClient('tethys-ts.duckdns.org', password=root_pass, username=root_user)
 
 db = client[database]
 
@@ -85,10 +86,13 @@ with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
 
 try:
     db.create_collection(loc_coll, validator={'$jsonSchema': loc1})
-    db[loc_coll].create_index(loc_index1)
-    db[loc_coll].create_index(loc_index2)
 except:
-    print(loc_coll + ' already created')
+    db.command('collMod', loc_coll, validator= {'$jsonSchema': loc1})
+    db[loc_coll].drop_indexes()
+
+db[loc_coll].create_index(loc_index1)
+db[loc_coll].create_index(loc_index2)
+
 
 ## license collection
 
@@ -106,9 +110,11 @@ with open(os.path.join(base_dir, schema_dir, log_yml)) as yml:
 
 try:
     db.create_collection(log_coll, validator={'$jsonSchema': log1})
-    db[log_coll].create_index(log_index1)
 except:
-    print(log_coll + ' already created')
+    db.command('collMod', log_coll, validator= {'$jsonSchema': log1})
+    db[log_coll].drop_indexes()
+
+db[log_coll].create_index(log_index1)
 
 ## loc-dataset collection
 
@@ -117,9 +123,11 @@ with open(os.path.join(base_dir, schema_dir, loc_dataset_yml)) as yml:
 
 try:
     db.create_collection(loc_dataset_coll, validator={'$jsonSchema': loc_dataset1})
-    db[loc_dataset_coll].create_index(loc_dataset_index1, unique=True)
 except:
-    print(loc_dataset_coll + ' already created')
+    db.command('collMod', loc_dataset_coll, validator= {'$jsonSchema': loc_dataset1})
+    db[loc_dataset_coll].drop_indexes()
+
+db[loc_dataset_coll].create_index(loc_dataset_index1, unique=True)
 
 ## dataset collection
 
@@ -128,9 +136,11 @@ with open(os.path.join(base_dir, schema_dir, dataset_yml)) as yml:
 
 try:
     db.create_collection(dataset_coll, validator={'$jsonSchema': dataset1})
-    db[dataset_coll].create_index(dataset_index1, unique=True)
 except:
-    print(dataset_coll + ' already created')
+    db.command('collMod', dataset_coll, validator= {'$jsonSchema': dataset1})
+    db[dataset_coll].drop_indexes()
+
+db[dataset_coll].create_index(dataset_index1, unique=True)
 
 ## time series result collection
 
@@ -139,9 +149,11 @@ with open(os.path.join(base_dir, schema_dir, ts1_yml)) as yml:
 
 try:
     db.create_collection(ts1_coll, validator={'$jsonSchema': ts1})
-    db[ts1_coll].create_index(ts1_index1, unique=True)
 except:
-    print(ts1_coll + ' already created')
+    db.command('collMod', ts1_coll, validator= {'$jsonSchema': ts1})
+    db[ts1_coll].drop_indexes()
+
+db[ts1_coll].create_index(ts1_index1, unique=True)
 
 #########################################
 ### Reference collections
