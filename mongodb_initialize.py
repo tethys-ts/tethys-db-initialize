@@ -81,7 +81,7 @@ with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
 db.create_collection(loc_coll, validator={'$jsonSchema': loc1})
 
 # db[loc_coll].create_index(loc_index1)
-db[loc_coll].create_index(loc_index2)
+db[loc_coll].create_index(loc_index2, unique=True)
 
 ## license collection
 
