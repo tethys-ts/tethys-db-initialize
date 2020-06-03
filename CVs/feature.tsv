@@ -1,6 +1,6 @@
 name	definition	envo	wikidata	hydro
-groundwater	Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel.	http://purl.obolibrary.org/obo/ENVO_01001004	https://www.wikidata.org/wiki/Q161598	Aquifer
-waterway	Body of water, including but not limited to rivers, lakes, seas, oceans, and canals	http://purl.obolibrary.org/obo/ENVO_00000029	https://www.wikidata.org/wiki/Q1267889	River
-atmosphere	Layer of gases surrounding the planet Earth	http://purl.obolibrary.org/obo/ENVO_01000267	https://www.wikidata.org/wiki/Q3230	Atmosphere
-pedosphere	Outermost layer of the Earth that is composed of soil and subject to soil formation processes	http://purl.obolibrary.org/obo/ENVO_01000820	https://www.wikidata.org/wiki/Q941094	Soil
-still waters	A water body in which the accumulated water, in its totality, has very little to no directed flow.	http://purl.obolibrary.org/obo/ENVO_01000617	https://www.wikidata.org/wiki/Q337567	Lake
+Groundwater	Underground water which is located in pore spaces found in rock or unconsolidated deposits such as soil, clay, or gravel.	http://purl.obolibrary.org/obo/ENVO_01001004	https://www.wikidata.org/wiki/Q161598	Aquifer
+Waterway	Body of water, including but not limited to rivers, lakes, seas, oceans, and canals	http://purl.obolibrary.org/obo/ENVO_00000029	https://www.wikidata.org/wiki/Q1267889	River
+Atmosphere	Layer of gases surrounding the planet Earth	http://purl.obolibrary.org/obo/ENVO_01000267	https://www.wikidata.org/wiki/Q3230	Atmosphere
+Pedosphere	Outermost layer of the Earth that is composed of soil and subject to soil formation processes	http://purl.obolibrary.org/obo/ENVO_01000820	https://www.wikidata.org/wiki/Q941094	Soil
+Still waters	A water body in which the accumulated water, in its totality, has very little to no directed flow.	http://purl.obolibrary.org/obo/ENVO_01000617	https://www.wikidata.org/wiki/Q337567	Lake
