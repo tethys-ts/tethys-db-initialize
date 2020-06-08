@@ -57,10 +57,10 @@ dataset_coll = 'dataset'
 
 dataset_index1 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1)]
 
-loc_dataset_yml = 'loc_dataset_gen_schema.yml'
-loc_dataset_coll = 'loc_dataset_gen'
+loc_dataset_yml = 'loc_dataset_schema.yml'
+loc_dataset_coll = 'loc_dataset'
 
-loc_dataset_index1 = [('location_id', 1), ('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1)]
+loc_dataset_index1 = [('location_id', 1), ('dataset_id', 1)]
 
 ts1_yml = 'result1_schema.yml'
 ts1_coll = 'time_series_result'
