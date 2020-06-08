@@ -73,6 +73,7 @@ sleep(3)
 ### Initialize the collections, set the schemas, and set the indexes
 
 client = MongoClient('db', password=root_pass, username=root_user)
+# client = MongoClient('127.0.0.1', password=root_pass, username=root_user)
 # client = MongoClient('tethys-ts.duckdns.org', password=root_pass, username=root_user)
 
 db = client[database]
