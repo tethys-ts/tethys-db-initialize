@@ -36,11 +36,11 @@ except:
 schema_dir = 'schemas'
 cv_dir = 'CVs'
 
-loc_yml = 'location_schema.yml'
-loc_coll = 'location'
+loc_yml = 'sampling_site_schema.yml'
+loc_coll = 'sampling_site'
 
 loc_index1 = [('ref', 1)]
-loc_index2 = [('geometry', '2dsphere')]
+loc_index2 = [('location', '2dsphere')]
 
 # license_yml = 'license_schema.yml'
 # license_coll = 'license'
@@ -57,15 +57,15 @@ dataset_coll = 'dataset'
 
 dataset_index1 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1)]
 
-loc_dataset_yml = 'loc_dataset_schema.yml'
-loc_dataset_coll = 'loc_dataset'
+loc_dataset_yml = 'site_dataset_schema.yml'
+loc_dataset_coll = 'site_dataset'
 
-loc_dataset_index1 = [('location_id', 1), ('dataset_id', 1)]
+loc_dataset_index1 = [('site_id', 1), ('dataset_id', 1)]
 
 ts1_yml = 'result1_schema.yml'
 ts1_coll = 'time_series_result'
 
-ts1_index1 = [('location_id', 1), ('dataset_id', 1), ('from_date', 1)]
+ts1_index1 = [('site_id', 1), ('dataset_id', 1), ('from_date', 1)]
 
 sleep(3)
 
