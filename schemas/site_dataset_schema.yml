@@ -1,8 +1,8 @@
-required: ['location_id', 'dataset_id']
+required: ['site_id', 'dataset_id']
 properties:
-  location_id:
+  site_id:
     bsonType: 'objectId'
-    description: 'the location id from the location collection.'
+    description: 'the sampling site id from the sampling site collection.'
   dataset_id:
     bsonType: 'objectId'
     description: 'the dataset id from the dataset collection.'
