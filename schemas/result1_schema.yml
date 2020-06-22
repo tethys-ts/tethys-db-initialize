@@ -1,4 +1,4 @@
-required: [location_id, dataset_id, from_date, result]
+required: [site_id, dataset_id, from_date, result]
 properties:
   site_id:
     bsonType: 'objectId'
