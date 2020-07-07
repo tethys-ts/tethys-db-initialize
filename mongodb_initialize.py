@@ -55,7 +55,7 @@ log_index1 = [('run_date_start', 1), ('source', 1)]
 dataset_yml = 'dataset_schema.yml'
 dataset_coll = 'dataset'
 
-dataset_index1 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1)]
+dataset_index1 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1), ('utc_offset', 1)]
 
 loc_dataset_yml = 'site_dataset_schema.yml'
 loc_dataset_coll = 'site_dataset'

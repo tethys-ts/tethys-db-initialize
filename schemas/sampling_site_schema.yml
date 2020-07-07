@@ -1,4 +1,4 @@
-required: ['location', 'virtual_site']
+required: ['geometry', 'virtual_site']
 properties:
   ref:
     bsonType: 'string'
@@ -12,7 +12,7 @@ properties:
   virtual_site:
     bsonType: 'bool'
     description: 'Does the sampling site not have a physical location? For example, is this location from a numerical model with gridded output?'
-  location:
+  geometry:
     bsonType: 'object'
     description: 'GeoJson of the geometry location.'
     required: [type, coordinates]
