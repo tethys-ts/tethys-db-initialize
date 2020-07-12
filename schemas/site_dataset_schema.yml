@@ -12,6 +12,6 @@ properties:
   properties:
     bsonType: 'object'
     description: 'Any additional dataset specific properties.'
-  last_update_date:
+  modified_date:
     bsonType: date
-    description: 'The last update date from the source database.'
+    description: 'The last modified date from the source database.'
