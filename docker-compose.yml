@@ -21,11 +21,11 @@ services:
       RW_PASSWORD: readwriter
     depends_on:
       - "db"
-  updater:
-    image: tethys-updater
-    environment:
-      DATABASE: tethys
-      RW_USERNAME: readwriter
-      RW_PASSWORD: readwriter
-    depends_on:
-      - "db-initialize"
+  # updater:
+  #   image: tethys-updater
+  #   environment:
+  #     DATABASE: tethys
+  #     RW_USERNAME: readwriter
+  #     RW_PASSWORD: readwriter
+  #   depends_on:
+  #     - "db-initialize"
