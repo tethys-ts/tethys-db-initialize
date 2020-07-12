@@ -50,7 +50,7 @@ loc_index2 = [('location', '2dsphere')]
 log_yml = 'processing_log_schema.yml'
 log_coll = 'processing_log'
 
-log_index1 = [('run_date_start', 1), ('source', 1)]
+log_index1 = [('run_date_start', 1), ('dataset_id', 1)]
 
 dataset_yml = 'dataset_schema.yml'
 dataset_coll = 'dataset'
