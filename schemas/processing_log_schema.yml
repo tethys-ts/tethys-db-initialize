@@ -1,13 +1,13 @@
-required: ['run_date_start', 'run_date_end', 'modified_date', 'dataset_id', 'result']
+required: ['run_date_start', 'run_date_end', 'dataset_id', 'result']
 properties:
   run_date_start:
     bsonType: date
   run_date_end:
     bsonType: date
-  modified_date:
-    bsonType: date
   dataset_id:
-    bsonType: 'object'
+    bsonType: 'objectId'
+  site_id:
+    bsonType: 'objectId'
   properties:
     bsonType: 'object'
   result:
