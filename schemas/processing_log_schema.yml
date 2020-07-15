@@ -10,7 +10,7 @@ properties:
     bsonType: 'objectId'
   properties:
     bsonType: 'object'
-  result:
-    bsonType: 'string'
+  success:
+    bsonType: 'bool'
   comments:
     bsonType: 'string'
