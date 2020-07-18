@@ -9,9 +9,12 @@ properties:
   stats:
     bsonType: object
     description: 'Statistics related to the results.'
+  source:
+    bsonType: 'object'
+    description: 'Source data from the last file that was loaded. In most cases the source will be from an s3 object store.'
   properties:
     bsonType: 'object'
     description: 'Any additional dataset specific properties.'
-  last_update_date:
+  modified_date:
     bsonType: date
-    description: 'The last update date from the source database.'
+    description: 'The last modified date from the source database.'

@@ -1,16 +1,14 @@
-required: ['run_date_start', 'run_date_end', 'modified_date', 'source', 'result']
+required: ['date', 'dataset_id', 'success']
 properties:
-  run_date_start:
+  date:
     bsonType: date
-  run_date_end:
-    bsonType: date
-  modified_date:
-    bsonType: date
-  source:
-    bsonType: 'object'
+  dataset_id:
+    bsonType: 'objectId'
+  site_id:
+    bsonType: 'objectId'
   properties:
     bsonType: 'object'
-  result:
-    bsonType: 'string'
+  success:
+    bsonType: 'bool'
   comments:
     bsonType: 'string'

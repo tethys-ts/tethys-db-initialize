@@ -1,4 +1,4 @@
-required: ['feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'units', 'license', 'result_type']
+required: ['feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset', 'units', 'license', 'result_type']
 properties:
   feature:
     bsonType: 'string'
@@ -20,7 +20,10 @@ properties:
     description: 'The statistic that defines how the result was calculated. The aggregation statistic is calculated over the time frequency interval associated with the recorded observation.'
   frequency_interval:
     bsonType: 'string'
-    description: 'The frequency that the observation was recorded at.'
+    description: 'The frequency that the observation was recorded at. In the form 1H for hourly.'
+  utc_offset:
+    bsonType: 'string'
+    description: 'The offset time from UTC associated with the frequency_interval. For example, if data was collected daily at 9:00, then the frequency_interval would be 24H and the utc_offset would be 9H. The offset must be smaller than the frequency_interval.'
   units:
     bsonType: 'string'
     description: 'The units of the result.'
