@@ -33,6 +33,12 @@ properties:
   result_type:
     bsonType: 'string'
     description: 'The collection where the results will be saved.'
+  cf_standard_name:
+    bsonType: 'string'
+    description: 'The CF conventions standard name for the parameter.'
+  precision:
+    bsonType: 'double'
+    description: 'The decimal precision of the result values.'
   properties:
     bsonType: 'object'
     description: 'Any additional dataset specific properties.'
