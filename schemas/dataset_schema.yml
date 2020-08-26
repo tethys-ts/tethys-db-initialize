@@ -1,4 +1,4 @@
-required: ['feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset', 'units', 'license', 'result_type']
+required: ['feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset']
 properties:
   feature:
     bsonType: 'string'
