@@ -65,7 +65,7 @@ loc_dataset_index1 = [('site_id', 1), ('dataset_id', 1)]
 ts1_yml = 'result1_schema.yml'
 ts1_coll = 'time_series_result'
 
-ts1_index1 = [('site_id', 1), ('dataset_id', 1), ('from_date', 1)]
+ts1_index1 = [('dataset_id', 1), ('site_id', 1), ('from_date', 1)]
 
 sleep(3)
 
@@ -164,7 +164,6 @@ cv_list = os.listdir(os.path.join(base_dir, cv_dir))
 for cv in cv_list:
     cv1 = pd.read_table(os.path.join(base_dir, cv_dir, cv))
     cv1 = cv1.drop_duplicates('name')
-    cv1
     cv2 = cv1.to_dict('records')
     name = cv.split('.')[0]
     try:
