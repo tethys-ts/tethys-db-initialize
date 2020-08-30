@@ -40,7 +40,7 @@ loc_yml = 'sampling_site_schema.yml'
 loc_coll = 'sampling_site'
 
 loc_index1 = [('ref', 1)]
-loc_index2 = [('location', '2dsphere')]
+loc_index2 = [('geometry', '2dsphere')]
 
 # license_yml = 'license_schema.yml'
 # license_coll = 'license'
