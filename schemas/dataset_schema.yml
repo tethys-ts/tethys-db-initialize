@@ -30,6 +30,9 @@ properties:
   license:
     bsonType: 'string'
     description: 'The legal data license associated with the dataset defined by the operator.'
+  attribution:
+    bsonType: 'string'
+    description: 'The legally required attribution text to be distributed with the data defined by the operator.'
   result_type:
     bsonType: 'string'
     description: 'The collection where the results will be saved.'
