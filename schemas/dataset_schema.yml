@@ -29,10 +29,10 @@ properties:
     description: 'The units of the result.'
   license:
     bsonType: 'string'
-    description: 'The legal data license associated with the dataset defined by the operator.'
+    description: 'The legal data license associated with the dataset defined by the owner.'
   attribution:
     bsonType: 'string'
-    description: 'The legally required attribution text to be distributed with the data defined by the operator.'
+    description: 'The legally required attribution text to be distributed with the data defined by the owner.'
   result_type:
     bsonType: 'string'
     description: 'The collection where the results will be saved.'
