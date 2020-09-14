@@ -5,3 +5,4 @@ field_activity	A method for performing an activity in the field at or on a sampl
 simulation	A method for creating results by running a simulation model.	NA
 sample_analysis	A method for ex situ analysis of a sample using an instrument, typically in a laboratory, for the purpose of measuring properties of a sample.	Manual Lab
 sensor_recording	A method for creating results by automatic sensor measurements.	Recorder
+forecast  A type of simulation to predict the future. NA
