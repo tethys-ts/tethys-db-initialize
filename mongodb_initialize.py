@@ -67,6 +67,11 @@ ts1_coll = 'time_series_result'
 
 ts1_index1 = [('dataset_id', 1), ('site_id', 1), ('from_date', 1)]
 
+ts2_yml = 'result_simulation_schema.yml'
+ts2_coll = 'time_series_simulation'
+
+ts2_index1 = [('dataset_id', 1), ('site_id', 1), ('simulation_date', 1)]
+
 sleep(3)
 
 ############################################
@@ -155,6 +160,19 @@ except:
     db[ts1_coll].drop_indexes()
 
 db[ts1_coll].create_index(ts1_index1, unique=True)
+
+## time series simulation collection
+
+with open(os.path.join(base_dir, schema_dir, ts2_yml)) as yml:
+    ts2 = yaml.safe_load(yml)
+
+try:
+    db.create_collection(ts2_coll, validator={'$jsonSchema': ts2})
+except:
+    db.command('collMod', ts2_coll, validator= {'$jsonSchema': ts2})
+    db[ts2_coll].drop_indexes()
+
+db[ts2_coll].create_index(ts2_index1, unique=True)
 
 #########################################
 ### Reference collections

@@ -1,0 +1,30 @@
+required: [site_id, dataset_id, simulation_date, from_date, result]
+properties:
+  site_id:
+    bsonType: 'objectId'
+    description: 'the sampling site id from the sampling site collection.'
+  dataset_id:
+    bsonType: 'objectId'
+    description: 'the dataset id from the dataset collection.'
+  simulation_date:
+    bsonType: 'date'
+    description: 'The simulation run datetime.'
+  from_date:
+    bsonType: 'array'
+    description: 'The start datetime of the observation.'
+    items:
+      bsonType: 'date'
+  result:
+    bsonType: array
+    description: 'The recorded observation parameter.'
+    items:
+      bsonType: [string, int, double, long]
+  censor_code:
+    bsonType: array
+    items:
+      bsonType: string
+  properties:
+    bsonType: 'object'
+    description: 'Any additional result specific properties.'
+  modified_date:
+    bsonType: date
