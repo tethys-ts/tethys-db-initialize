@@ -1,0 +1,14 @@
+required: ['date', 'dataset_id', 'success']
+properties:
+  date:
+    bsonType: date
+  dataset_id:
+    bsonType: 'objectId'
+  site_id:
+    bsonType: 'objectId'
+  properties:
+    bsonType: 'object'
+  success:
+    bsonType: 'bool'
+  comments:
+    bsonType: 'string'

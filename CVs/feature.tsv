@@ -3,4 +3,4 @@ groundwater	Underground water which is located in pore spaces found in rock or u
 waterway	Body of water, including but not limited to rivers, lakes, seas, oceans, and canals	http://purl.obolibrary.org/obo/ENVO_00000029	https://www.wikidata.org/wiki/Q1267889	River
 atmosphere	Layer of gases surrounding the planet Earth	http://purl.obolibrary.org/obo/ENVO_01000267	https://www.wikidata.org/wiki/Q3230	Atmosphere
 pedosphere	Outermost layer of the Earth that is composed of soil and subject to soil formation processes	http://purl.obolibrary.org/obo/ENVO_01000820	https://www.wikidata.org/wiki/Q941094	Soil
-still waters	A water body in which the accumulated water, in its totality, has very little to no directed flow.	http://purl.obolibrary.org/obo/ENVO_01000617	https://www.wikidata.org/wiki/Q337567	Lake
+still_waters	A water body in which the accumulated water, in its totality, has very little to no directed flow.	http://purl.obolibrary.org/obo/ENVO_01000617	https://www.wikidata.org/wiki/Q337567	Lake

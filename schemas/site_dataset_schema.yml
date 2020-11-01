@@ -1,0 +1,20 @@
+required: ['site_id', 'dataset_id']
+properties:
+  site_id:
+    bsonType: 'objectId'
+    description: 'the sampling site id from the sampling site collection.'
+  dataset_id:
+    bsonType: 'objectId'
+    description: 'the dataset id from the dataset collection.'
+  stats:
+    bsonType: object
+    description: 'Statistics related to the results.'
+  source:
+    bsonType: 'object'
+    description: 'Source data from the last file that was loaded. In most cases the source will be from an s3 object store.'
+  properties:
+    bsonType: 'object'
+    description: 'Any additional dataset specific properties.'
+  modified_date:
+    bsonType: date
+    description: 'The last modified date from the source database.'

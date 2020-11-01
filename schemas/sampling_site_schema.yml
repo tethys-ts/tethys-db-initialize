@@ -1,4 +1,4 @@
-required: ['geometry', 'virtual_location']
+required: ['geometry', 'virtual_site']
 properties:
   ref:
     bsonType: 'string'
@@ -9,14 +9,23 @@ properties:
   osm_id:
     bsonType: 'int'
     description: 'The OpenStreetMap ID if one exists.'
-  virtual_location:
+  virtual_site:
     bsonType: 'bool'
-    description: 'Is the location not a physical location? For example, is this location from a numerical model with gridded output?'
+    description: 'Does the sampling site not have a physical location? For example, is this location from a numerical model with gridded output?'
   geometry:
     bsonType: 'object'
     description: 'GeoJson of the geometry location.'
+    required: [type, coordinates]
+    properties:
+      type:
+        bsonType: string
+      coordinates:
+        bsonType: array
+  altitude:
+    bsonType: 'double'
+    description: 'Altitude of the site.'
   properties:
     bsonType: 'object'
-    description: 'Any additional location and operator specific properties.'
+    description: 'Any additional site and operator specific properties.'
   modified_date:
     bsonType: date
