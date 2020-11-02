@@ -1,20 +1,57 @@
 required: ['site_id', 'dataset_id']
 properties:
-  site_id:
-    bsonType: 'objectId'
-    description: 'the sampling site id from the sampling site collection.'
   dataset_id:
-    bsonType: 'objectId'
+    type: 'objectId'
     description: 'the dataset id from the dataset collection.'
+  sites:
+    type: 'array'
+    description: 'An array of the sites.'
+    items:
+      type: object
+      required: ['site_id', 'geometry', 'virtual_site']
+      properties:
+        site_id:
+          type: 'string'
+          description: 'The unique site uuid.'
+        ref:
+          type: 'string'
+          description: 'The reference identifier used by the associated owner/operator.'
+        name:
+          type: 'string'
+          description: 'The name given by the owner/operator.'
+        osm_id:
+          type: 'int'
+          description: 'The OpenStreetMap ID if one exists.'
+        virtual_site:
+          type: 'bool'
+          description: 'Does the sampling site not have a physical location? For example, is this location from a numerical model with gridded output?'
+        geometry:
+          type: 'object'
+          description: 'GeoJson of the geometry location.'
+          required: [type, coordinates]
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+        altitude:
+          type: 'double'
+          description: 'Altitude of the site.'
+        properties:
+          type: 'object'
+          description: 'Any additional site and operator specific properties.'
+        modified_date:
+          type: date
+
   stats:
-    bsonType: object
+    type: object
     description: 'Statistics related to the results.'
   source:
-    bsonType: 'object'
+    type: 'object'
     description: 'Source data from the last file that was loaded. In most cases the source will be from an s3 object store.'
   properties:
-    bsonType: 'object'
+    type: 'object'
     description: 'Any additional dataset specific properties.'
   modified_date:
-    bsonType: date
+    type: date
     description: 'The last modified date from the source database.'

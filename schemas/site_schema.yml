@@ -1,31 +1,41 @@
-required: ['geometry', 'virtual_site']
+title: site
+required: ['site_id', 'geometry', 'virtual_site']
 properties:
+  site_id:
+    type: 'string'
+    description: 'The unique site uuid.'
   ref:
-    bsonType: 'string'
+    type: 'string'
     description: 'The reference identifier used by the associated owner/operator.'
   name:
-    bsonType: 'string'
+    type: 'string'
     description: 'The name given by the owner/operator.'
   osm_id:
-    bsonType: 'int'
+    type: 'int'
     description: 'The OpenStreetMap ID if one exists.'
   virtual_site:
-    bsonType: 'bool'
+    type: 'bool'
     description: 'Does the sampling site not have a physical location? For example, is this location from a numerical model with gridded output?'
   geometry:
-    bsonType: 'object'
+    type: 'object'
     description: 'GeoJson of the geometry location.'
     required: [type, coordinates]
     properties:
       type:
-        bsonType: string
+        type: string
       coordinates:
-        bsonType: array
+        type: array
   altitude:
-    bsonType: 'double'
+    type: 'double'
     description: 'Altitude of the site.'
+  stats:
+    type: object
+    description: 'Statistics related to the results.'
+  time_series_object_list:
+    type: 'array'
+    description: An array of the time series data keys.
   properties:
-    bsonType: 'object'
+    type: 'object'
     description: 'Any additional site and operator specific properties.'
   modified_date:
-    bsonType: date
+    type: date
