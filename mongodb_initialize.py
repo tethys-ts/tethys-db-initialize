@@ -60,6 +60,11 @@ dataset_coll = 'dataset'
 dataset_index1 = [('dataset_id', 1)]
 dataset_index2 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1), ('utc_offset', 1)]
 
+remotes_yml = 'remotes_schema.yml'
+remotes_coll = 'remotes'
+
+remotes_index1 = [('dataset_id', 1)]
+
 # loc_dataset_yml = 'site_dataset_schema.yml'
 # loc_dataset_coll = 'site_dataset'
 #
@@ -153,6 +158,19 @@ except:
 
 db[dataset_coll].create_index(dataset_index1, unique=True)
 db[dataset_coll].create_index(dataset_index2, unique=True)
+
+## remotes collection
+
+with open(os.path.join(base_dir, schema_dir, remotes_yml)) as yml:
+    remotes1 = yaml.safe_load(yml)
+
+try:
+    db.create_collection(remotes_coll, validator={'$jsonSchema': remotes1})
+except:
+    db.command('collMod', remotes_coll, validator= {'$jsonSchema': remotes1})
+    db[remotes_coll].drop_indexes()
+
+db[remotes_coll].create_index(remotes_index1, unique=True)
 
 ## time series result collection
 

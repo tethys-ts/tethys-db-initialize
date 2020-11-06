@@ -1,0 +1,25 @@
+title: remotes
+required: [dataset_id, bucket, connection_config]
+properties:
+  dataset_id:
+    bsonType: 'string'
+    description: 'The unique dataset uuid.'
+  bucket:
+    bsonType: 'string'
+    description: 'The S3 bucket.'
+  delimiter:
+    bsonType: 'string'
+    description: 'The key delimiter.'
+  connection_config:
+    bsonType: 'object'
+    description: 'The S3 connection data.'
+    required: [service_name, endpoint_url, aws_access_key_id, aws_secret_access_key]
+    properties:
+      service_name:
+        bsonType: string
+      endpoint_url:
+        bsonType: string
+      aws_access_key_id:
+        bsonType: string
+      aws_secret_access_key:
+        bsonType: string
