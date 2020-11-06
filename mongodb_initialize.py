@@ -18,7 +18,7 @@ pd.set_option('display.max_rows', 30)
 #############################################
 ### Parameters
 
-# base_dir = os.path.realpath(os.path.dirname(__file__))
+base_dir = os.path.realpath(os.path.dirname(__file__))
 
 # try:
 #     param = os.environ.copy()
@@ -32,6 +32,8 @@ pd.set_option('display.max_rows', 30)
 #     database = param['DATABASE']
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
+
+database = 'tethys'
 
 schema_dir = 'schemas'
 cv_dir = 'CVs'
@@ -73,12 +75,13 @@ dataset_index2 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_
 #
 # ts2_index1 = [('dataset_id', 1), ('site_id', 1), ('simulation_date', 1)]
 
-sleep(3)
+sleep(1)
 
 ############################################
 ### Initialize the collections, set the schemas, and set the indexes
 
 client = MongoClient('db')
+# client = MongoClient('127.0.0.1')
 # client = MongoClient('db', password=root_pass, username=root_user)
 # client = MongoClient('127.0.0.1', password=root_pass, username=root_user)
 # client = MongoClient('tethys-ts.duckdns.org', password=root_pass, username=root_user)

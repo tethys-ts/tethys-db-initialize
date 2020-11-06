@@ -1,56 +1,56 @@
 required: ['dataset_id', 'feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset']
 properties:
   dataset_id:
-    type: 'string'
+    bsonType: 'string'
     description: 'The unique dataset uuid.'
   site_object_key:
-    type: 'string'
+    bsonType: 'string'
     description: 'The object key to the sites data.'
   feature:
-    type: 'string'
+    bsonType: 'string'
     description: 'The hydrologic feature associated with the dataset.'
   parameter:
-    type: 'string'
+    bsonType: 'string'
     description: 'The recorded observation parameter.'
   method:
-    type: 'string'
+    bsonType: 'string'
     description: 'The way the recorded observation was obtained.'
   processing_code:
-    type: 'string'
+    bsonType: 'string'
     description: 'The code associated with the processing state of the recorded observation.'
   owner:
-    type: 'string'
+    bsonType: 'string'
     description: 'The operator, owner, and/or producer of the associated data.'
   aggregation_statistic:
-    type: 'string'
+    bsonType: 'string'
     description: 'The statistic that defines how the result was calculated. The aggregation statistic is calculated over the time frequency interval associated with the recorded observation.'
   frequency_interval:
-    type: 'string'
+    bsonType: 'string'
     description: 'The frequency that the observation was recorded at. In the form 1H for hourly.'
   utc_offset:
-    type: 'string'
+    bsonType: 'string'
     description: 'The offset time from UTC associated with the frequency_interval. For example, if data was collected daily at 9:00, then the frequency_interval would be 24H and the utc_offset would be 9H. The offset must be smaller than the frequency_interval.'
   units:
-    type: 'string'
+    bsonType: 'string'
     description: 'The units of the result.'
   license:
-    type: 'string'
+    bsonType: 'string'
     description: 'The legal data license associated with the dataset defined by the owner.'
   attribution:
-    type: 'string'
+    bsonType: 'string'
     description: 'The legally required attribution text to be distributed with the data defined by the owner.'
   result_type:
-    type: 'string'
+    bsonType: 'string'
     description: 'The collection where the results will be saved.'
   cf_standard_name:
-    type: 'string'
+    bsonType: 'string'
     description: 'The CF conventions standard name for the parameter.'
   wrf_standard_name:
-    type: 'string'
+    bsonType: 'string'
     description: 'The WRF standard name for the parameter.'
   precision:
-    type: 'double'
+    bsonType: 'double'
     description: 'The decimal precision of the result values.'
   properties:
-    type: 'object'
+    bsonType: 'object'
     description: 'Any additional dataset specific properties.'

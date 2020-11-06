@@ -2,46 +2,46 @@ title: site
 required: [dataset_id, 'site_id', 'geometry', 'virtual_site']
 properties:
   dataset_id:
-    type: 'string'
+    bsonType: 'string'
     description: 'The unique dataset uuid.'
   site_id:
-    type: 'string'
+    bsonType: 'string'
     description: 'The unique site uuid.'
   ref:
-    type: 'string'
+    bsonType: 'string'
     description: 'The reference identifier used by the associated owner/operator.'
   name:
-    type: 'string'
+    bsonType: 'string'
     description: 'The name given by the owner/operator.'
   osm_id:
-    type: 'int'
+    bsonType: 'int'
     description: 'The OpenStreetMap ID if one exists.'
   virtual_site:
-    type: 'bool'
+    bsonType: 'bool'
     description: 'Does the sampling site not have a physical location? For example, is this location from a numerical model with gridded output?'
   geometry:
-    type: 'object'
+    bsonType: 'object'
     description: 'GeoJson of the geometry location.'
     required: [type, coordinates]
     properties:
       type:
-        type: string
+        bsonType: string
       coordinates:
-        type: array
+        bsonType: array
   altitude:
-    type: 'double'
+    bsonType: 'double'
     description: 'Altitude of the site.'
   stats:
-    type: object
+    bsonType: object
     description: 'Statistics related to the results.'
   # time_series_object_list:
-  #   type: 'array'
+  #   bsonType: 'array'
   #   description: An array of the time series data keys.
   time_series_object_info:
-    type: object
+    bsonType: object
     description: 'The informations related to the time series keys in S3.'
   properties:
-    type: 'object'
+    bsonType: 'object'
     description: 'Any additional site and operator specific properties.'
   modified_date:
-    type: date
+    bsonType: date
