@@ -1,6 +1,9 @@
 title: site
-required: ['site_id', 'geometry', 'virtual_site']
+required: [dataset_id, 'site_id', 'geometry', 'virtual_site']
 properties:
+  dataset_id:
+    type: 'string'
+    description: 'The unique dataset uuid.'
   site_id:
     type: 'string'
     description: 'The unique site uuid.'
@@ -31,9 +34,12 @@ properties:
   stats:
     type: object
     description: 'Statistics related to the results.'
-  time_series_object_list:
-    type: 'array'
-    description: An array of the time series data keys.
+  # time_series_object_list:
+  #   type: 'array'
+  #   description: An array of the time series data keys.
+  time_series_object_info:
+    type: object
+    description: 'The informations related to the time series keys in S3.'
   properties:
     type: 'object'
     description: 'Any additional site and operator specific properties.'
