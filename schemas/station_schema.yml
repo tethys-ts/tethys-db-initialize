@@ -18,7 +18,7 @@ properties:
     description: 'The OpenStreetMap ID if one exists.'
   virtual_station:
     bsonType: 'bool'
-    description: 'Does the sampling station not have a physical location? For example, is this location from a numerical model with gridded output?'
+    description: 'Does the station not have a physical location? For example, is this location from a numerical model with gridded output?'
   geometry:
     bsonType: 'object'
     description: 'GeoJson of the geometry location.'
@@ -37,7 +37,7 @@ properties:
   # time_series_object_list:
   #   bsonType: 'array'
   #   description: An array of the time series data keys.
-  time_series_object_info:
+  time_series_object_key:
     bsonType: object
     description: 'The informations related to the time series keys in S3.'
   properties:

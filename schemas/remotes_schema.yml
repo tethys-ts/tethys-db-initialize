@@ -10,6 +10,12 @@ properties:
   delimiter:
     bsonType: 'string'
     description: 'The key delimiter.'
+  daily_data_limit:
+    bsonType: 'int'
+    description: 'The daily download limit for the remote in KB.'
+  daily_data_consumption:
+    bsonType: 'int'
+    description: 'The daily download consumption for the remote in KB.'
   connection_config:
     bsonType: 'object'
     description: 'The S3 connection data.'

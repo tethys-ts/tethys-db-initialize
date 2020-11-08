@@ -1,9 +1,9 @@
-required: ['dataset_id', 'feature', 'parameter', 'method', 'processing_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset']
+required: ['dataset_id', 'feature', 'parameter', 'method', 'product_code', 'owner', 'aggregation_statistic', 'frequency_interval', 'utc_offset']
 properties:
   dataset_id:
     bsonType: 'string'
     description: 'The unique dataset uuid.'
-  site_object_key:
+  station_object_key:
     bsonType: 'string'
     description: 'The object key to the sites data.'
   feature:
@@ -15,9 +15,9 @@ properties:
   method:
     bsonType: 'string'
     description: 'The way the recorded observation was obtained.'
-  processing_code:
+  product_code:
     bsonType: 'string'
-    description: 'The code associated with the processing state of the recorded observation.'
+    description: 'The code associated with kind of product produced. This could be generic codes like raw_data or quality_controlled; or it could be more uniquely identifying the simulation product that was produced.'
   owner:
     bsonType: 'string'
     description: 'The operator, owner, and/or producer of the associated data.'
@@ -51,6 +51,9 @@ properties:
   precision:
     bsonType: 'double'
     description: 'The decimal precision of the result values.'
+  description:
+    bsonType: 'string'
+    description: 'The description of the dataset.'
   properties:
     bsonType: 'object'
     description: 'Any additional dataset specific properties.'
