@@ -10,4 +10,4 @@ COPY CVs ./CVs
 COPY schemas ./schemas
 COPY mongodb_initialize.py ./
 
-CMD ["python", "mongodb_initialize.py"]
+CMD ["python", "-u", "mongodb_initialize.py"]

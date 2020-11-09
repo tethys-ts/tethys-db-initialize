@@ -7,7 +7,7 @@ services:
     ports:
       - "27017:27017"
   db-initialize:
-    image: tethysts/tethys-db-initialize:v02
+    image: tethysts/tethys-db-initialize:dev
     volumes:
         - "/media/sdb1/Projects/git/tethys/tethys-db-initialize/parameters.yml:/parameters.yml"
     depends_on:
