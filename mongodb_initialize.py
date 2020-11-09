@@ -110,8 +110,9 @@ except:
     db.command('collMod', loc_coll, validator= {'$jsonSchema': loc1})
     db[loc_coll].drop_indexes()
 
-db[loc_coll].create_index(loc_index1)
+db[loc_coll].create_index(loc_index1, unique=True)
 db[loc_coll].create_index(loc_index2)
+db[loc_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=86400)
 
 
 ## license collection

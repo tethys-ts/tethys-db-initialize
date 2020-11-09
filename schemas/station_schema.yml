@@ -45,3 +45,5 @@ properties:
     description: 'Any additional station and operator specific properties.'
   modified_date:
     bsonType: date
+  doc_created_date:
+    bsonType: date
