@@ -6,10 +6,10 @@ services:
     command: --wiredTigerJournalCompressor zstd --wiredTigerCollectionBlockCompressor zstd
     ports:
       - "27017:27017"
-  db-initialize:
-    image: tethysts/tethys-db-initialize:v02
-    depends_on:
-      - "db"
+  # db-initialize:
+  #   image: tethysts/tethys-db-initialize:v02
+  #   depends_on:
+  #     - "db"
   # updater:
   #   image: tethys-updater
   #   environment:
