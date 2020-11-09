@@ -11,6 +11,7 @@ from pymongo import MongoClient
 import yaml
 import json
 from time import sleep
+from tethysts import Tethys
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -33,15 +34,18 @@ base_dir = os.path.realpath(os.path.dirname(__file__))
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
+with open(os.path.join(base_dir, 'parameters.yml')) as param:
+    param = yaml.safe_load(param)
+
 database = 'tethys'
 
 schema_dir = 'schemas'
 cv_dir = 'CVs'
 
-loc_yml = 'site_schema.yml'
-loc_coll = 'site'
+loc_yml = 'station_schema.yml'
+loc_coll = 'station'
 
-loc_index1 = [('dataset_id', 1), ('site_id', 1)]
+loc_index1 = [('dataset_id', 1), ('station_id', 1)]
 loc_index2 = [('geometry', '2dsphere')]
 
 # license_yml = 'license_schema.yml'
@@ -58,27 +62,27 @@ dataset_yml = 'dataset_schema.yml'
 dataset_coll = 'dataset'
 
 dataset_index1 = [('dataset_id', 1)]
-dataset_index2 = [('feature', 1), ('parameter', 1), ('method', 1), ('processing_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1), ('utc_offset', 1)]
+dataset_index2 = [('feature', 1), ('parameter', 1), ('method', 1), ('product_code', 1), ('owner', 1), ('aggregation_statistic', 1), ('frequency_interval', 1), ('utc_offset', 1)]
 
 remotes_yml = 'remotes_schema.yml'
 remotes_coll = 'remotes'
 
 remotes_index1 = [('dataset_id', 1)]
 
-# loc_dataset_yml = 'site_dataset_schema.yml'
-# loc_dataset_coll = 'site_dataset'
+# loc_dataset_yml = 'station_dataset_schema.yml'
+# loc_dataset_coll = 'station_dataset'
 #
-# loc_dataset_index1 = [('site_id', 1), ('dataset_id', 1)]
+# loc_dataset_index1 = [('station_id', 1), ('dataset_id', 1)]
 
 # ts1_yml = 'result1_schema.yml'
 # ts1_coll = 'time_series_result'
 #
-# ts1_index1 = [('dataset_id', 1), ('site_id', 1), ('from_date', 1)]
+# ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('from_date', 1)]
 
 # ts2_yml = 'result_simulation_schema.yml'
 # ts2_coll = 'time_series_simulation'
 #
-# ts2_index1 = [('dataset_id', 1), ('site_id', 1), ('simulation_date', 1)]
+# ts2_index1 = [('dataset_id', 1), ('station_id', 1), ('simulation_date', 1)]
 
 sleep(1)
 
@@ -244,5 +248,18 @@ print(db.list_collection_names())
 #             db.command("updateUser", user, roles=['readWrite'])
 #         except:
 #             raise ValueError('Could not update user')
+
+####################################
+### Load in datasets and remotes
+
+remotes = param['remotes']
+
+tethys1 = Tethys(remotes)
+
+db['dataset'].insert_many(tethys1.datasets)
+
+remotes_list = [r for i, r in tethys1._remotes.items()]
+db['remotes'].insert_many(remotes_list)
+
 
 client.close()
