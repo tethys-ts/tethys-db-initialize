@@ -1,0 +1,16 @@
+required: [site_id, dataset_id, run_date, result]
+properties:
+  site_id:
+    bsonType: 'objectId'
+    description: 'the sampling site id from the sampling site collection.'
+  dataset_id:
+    bsonType: 'objectId'
+    description: 'the dataset id from the dataset collection.'
+  run_date:
+    bsonType: 'date'
+    description: 'The simulation run datetime.'
+  result:
+    bsonType: binData
+    description: 'The result as a binary zstd compressed netcdf.'
+  modified_date:
+    bsonType: date

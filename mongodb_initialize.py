@@ -74,10 +74,10 @@ remotes_index1 = [('dataset_id', 1)]
 #
 # loc_dataset_index1 = [('station_id', 1), ('dataset_id', 1)]
 
-# ts1_yml = 'result1_schema.yml'
-# ts1_coll = 'time_series_result'
-#
-# ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('from_date', 1)]
+ts1_yml = 'result_schema.yml'
+ts1_coll = 'result'
+
+ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('run_date', 1)]
 
 # ts2_yml = 'result_simulation_schema.yml'
 # ts2_coll = 'time_series_simulation'
@@ -179,16 +179,16 @@ db[remotes_coll].create_index(remotes_index1, unique=True)
 
 ## time series result collection
 
-# with open(os.path.join(base_dir, schema_dir, ts1_yml)) as yml:
-#     ts1 = yaml.safe_load(yml)
-#
-# try:
-#     db.create_collection(ts1_coll, validator={'$jsonSchema': ts1})
-# except:
-#     db.command('collMod', ts1_coll, validator= {'$jsonSchema': ts1})
-#     db[ts1_coll].drop_indexes()
-#
-# db[ts1_coll].create_index(ts1_index1, unique=True)
+with open(os.path.join(base_dir, schema_dir, ts1_yml)) as yml:
+    ts1 = yaml.safe_load(yml)
+
+try:
+    db.create_collection(ts1_coll, validator={'$jsonSchema': ts1})
+except:
+    db.command('collMod', ts1_coll, validator= {'$jsonSchema': ts1})
+    db[ts1_coll].drop_indexes()
+
+db[ts1_coll].create_index(ts1_index1, unique=True)
 
 ## time series simulation collection
 
