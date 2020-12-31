@@ -37,7 +37,7 @@ properties:
   # time_series_object_list:
   #   bsonType: 'array'
   #   description: An array of the time series data keys.
-  time_series_object_key:
+  results_object_key:
     bsonType: array
     description: 'The informations related to the time series keys in S3.'
   properties:
