@@ -177,7 +177,7 @@ except:
 
 db[remotes_coll].create_index(remotes_index1, unique=True)
 
-## time series result collection
+## result collection
 
 with open(os.path.join(base_dir, schema_dir, ts1_yml)) as yml:
     ts1 = yaml.safe_load(yml)
@@ -189,6 +189,7 @@ except:
     db[ts1_coll].drop_indexes()
 
 db[ts1_coll].create_index(ts1_index1, unique=True)
+db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=86400)
 
 ## time series simulation collection
 
@@ -262,5 +263,8 @@ db['dataset'].insert_many(tethys1.datasets)
 remotes_list = [r for i, r in tethys1._remotes.items()]
 db['remotes'].insert_many(remotes_list)
 
+print('datasets have been loaded')
+
+print('finished initialization')
 
 client.close()

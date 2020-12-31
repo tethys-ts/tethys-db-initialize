@@ -14,3 +14,5 @@ properties:
     description: 'The result as a binary zstd compressed netcdf.'
   modified_date:
     bsonType: date
+  doc_created_date:
+    bsonType: date
