@@ -99,7 +99,7 @@ db = client[database]
 
 print(db.list_collection_names())
 
-## location collection
+## station collection
 
 with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
     loc1 = yaml.safe_load(yml)

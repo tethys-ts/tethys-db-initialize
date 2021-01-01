@@ -34,12 +34,25 @@ properties:
   stats:
     bsonType: object
     description: 'Statistics related to the results.'
-  # time_series_object_list:
-  #   bsonType: 'array'
-  #   description: An array of the time series data keys.
   results_object_key:
     bsonType: array
-    description: 'The informations related to the time series keys in S3.'
+    description: 'The data related to the result object keys in S3.'
+    minItems: 1
+    uniqueItems: true
+    items:
+      bsonType: "object"
+      required: ["key", "bucket", "content_length", "etag", "run_date"]
+      properties:
+        key:
+          bsonType: "string"
+        bucket:
+          bsonType: "string"
+        content_length:
+          bsonType: "int"
+        etag:
+          bsonType: "string"
+        run_date:
+          bsonType: date
   properties:
     bsonType: 'object'
     description: 'Any additional station and operator specific properties.'
