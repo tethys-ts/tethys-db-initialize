@@ -258,7 +258,11 @@ remotes = param['remotes']
 
 tethys1 = Tethys(remotes)
 
-db['dataset'].insert_many(tethys1.datasets)
+datasets = tethys1.datasets.copy()
+
+[d['properties'].pop('encoding') for d in datasets]
+
+db['dataset'].insert_many(datasets)
 
 remotes_list = [r for i, r in tethys1._remotes.items()]
 db['remotes'].insert_many(remotes_list)
