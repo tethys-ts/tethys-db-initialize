@@ -1,8 +1,8 @@
-required: [site_id, dataset_id, run_date, result]
+required: [station_id, dataset_id, run_date, result]
 properties:
-  site_id:
+  station_id:
     bsonType: 'string'
-    description: 'the sampling site id from the sampling site collection.'
+    description: 'The unique station uuid.'
   dataset_id:
     bsonType: 'string'
     description: 'the dataset id from the dataset collection.'
