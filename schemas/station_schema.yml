@@ -52,7 +52,7 @@ properties:
         etag:
           bsonType: "string"
         run_date:
-          bsonType: date
+          bsonType: "string"
   properties:
     bsonType: 'object'
     description: 'Any additional station and operator specific properties.'
