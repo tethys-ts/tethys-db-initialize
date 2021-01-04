@@ -260,7 +260,7 @@ tethys1 = Tethys(remotes)
 
 datasets = tethys1.datasets.copy()
 
-[d['properties'].pop('encoding') for d in datasets]
+[d['properties'].pop('encoding') for d in datasets if 'properties' in d]
 
 db['dataset'].insert_many(datasets)
 
