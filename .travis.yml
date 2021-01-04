@@ -5,17 +5,14 @@ services:
 
 env:
   global:
-    IMAGE: tethysts/tethys-db-initialize:$TRAVIS_BRANCH
+    CACHE_IMAGE: tethysts/tethys-db-initialize:$TRAVIS_BRANCH
 
-# before_script:
-#   - docker pull $IMAGE || true
-#
-# script:
-#   - docker build --cache-from $IMAGE --tag $IMAGE .
+before_script:
+  - docker pull $CACHE_IMAGE || true
 
 script:
-  - docker build --tag $IMAGE .
+  - docker build --cache-from $CACHE_IMAGE --tag $CACHE_IMAGE .
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push $IMAGE
+  - docker push $CACHE_IMAGE
