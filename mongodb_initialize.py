@@ -11,7 +11,7 @@ from pymongo import MongoClient
 import yaml
 import json
 from time import sleep
-from tethysts import Tethys
+# from tethysts import Tethys
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -34,8 +34,8 @@ base_dir = os.path.realpath(os.path.dirname(__file__))
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
-with open(os.path.join(base_dir, 'parameters.yml')) as param:
-    param = yaml.safe_load(param)
+# with open(os.path.join(base_dir, 'parameters.yml')) as param:
+#     param = yaml.safe_load(param)
 
 database = 'tethys'
 
@@ -254,20 +254,20 @@ print(db.list_collection_names())
 ####################################
 ### Load in datasets and remotes
 
-remotes = param['remotes']
-
-tethys1 = Tethys(remotes)
-
-datasets = tethys1.datasets.copy()
-
-[d['properties'].pop('encoding') for d in datasets if 'properties' in d]
-
-db['dataset'].insert_many(datasets)
-
-remotes_list = [r for i, r in tethys1._remotes.items()]
-db['remotes'].insert_many(remotes_list)
-
-print('datasets have been loaded')
+# remotes = param['remotes']
+#
+# tethys1 = Tethys(remotes)
+#
+# datasets = tethys1.datasets.copy()
+#
+# [d['properties'].pop('encoding') for d in datasets if 'properties' in d]
+#
+# db['dataset'].insert_many(datasets)
+#
+# remotes_list = [r for i, r in tethys1._remotes.items()]
+# db['remotes'].insert_many(remotes_list)
+#
+# print('datasets have been loaded')
 
 print('finished initialization')
 
