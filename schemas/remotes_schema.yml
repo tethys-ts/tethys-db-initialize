@@ -17,15 +17,15 @@ properties:
     bsonType: 'int'
     description: 'The daily download consumption for the remote in KB.'
   connection_config:
-    bsonType: 'object'
+    bsonType: [object, str]
     description: 'The S3 connection data.'
-    required: [service_name, endpoint_url, aws_access_key_id, aws_secret_access_key]
-    properties:
-      service_name:
-        bsonType: string
-      endpoint_url:
-        bsonType: string
-      aws_access_key_id:
-        bsonType: string
-      aws_secret_access_key:
-        bsonType: string
+    # required: [service_name, endpoint_url, aws_access_key_id, aws_secret_access_key]
+    # properties:
+    #   service_name:
+    #     bsonType: string
+    #   endpoint_url:
+    #     bsonType: string
+    #   aws_access_key_id:
+    #     bsonType: string
+    #   aws_secret_access_key:
+    #     bsonType: string
