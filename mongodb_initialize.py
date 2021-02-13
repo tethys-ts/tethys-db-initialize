@@ -189,7 +189,7 @@ except:
     db[ts1_coll].drop_indexes()
 
 db[ts1_coll].create_index(ts1_index1, unique=True)
-db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=3600)
+db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=3300)
 
 ## time series simulation collection
 
