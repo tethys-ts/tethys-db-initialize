@@ -7,11 +7,11 @@ Created on Sat Nov 16 08:04:46 2019
 import os
 import pandas as pd
 import pymongo
-from pymongo import MongoClient
 import yaml
 import json
 from time import sleep
-# from tethysts import Tethys
+from tethysts import Tethys
+from pymongo import MongoClient, database, InsertOne, DeleteOne, ReplaceOne, UpdateOne, errors
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -33,9 +33,6 @@ base_dir = os.path.realpath(os.path.dirname(__file__))
 #     database = param['DATABASE']
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
-
-# with open(os.path.join(base_dir, 'parameters.yml')) as param:
-#     param = yaml.safe_load(param)
 
 database = 'tethys'
 
@@ -254,20 +251,32 @@ print(db.list_collection_names())
 ####################################
 ### Load in datasets and remotes
 
-# remotes = param['remotes']
-#
-# tethys1 = Tethys(remotes)
-#
-# datasets = tethys1.datasets.copy()
-#
-# [d['properties'].pop('encoding') for d in datasets if 'properties' in d]
-#
-# db['dataset'].insert_many(datasets)
-#
-# remotes_list = [r for i, r in tethys1._remotes.items()]
-# db['remotes'].insert_many(remotes_list)
-#
-# print('datasets have been loaded')
+if os.path.isfile(os.path.join(base_dir, 'parameters.yml')):
+
+    with open(os.path.join(base_dir, 'parameters.yml')) as param:
+        param = yaml.safe_load(param)
+
+    if 'remotes' in param:
+        remotes = param['remotes']
+
+        tethys1 = Tethys([r.dict() for r in remotes])
+        datasets = tethys1.datasets.copy()
+
+        query1 = [ReplaceOne({'dataset_id': d['dataset_id']}, d, upsert=True) for d in datasets]
+
+        try:
+            ds_ids = db['dataset'].bulk_write(query1, ordered=False)
+        except errors.BulkWriteError as err:
+            print(err.details)
+
+        query2 = [ReplaceOne({'dataset_id': d}, r, upsert=True) for d, r in tethys1._remotes.items()]
+
+        try:
+            ds_remotes = db['remotes'].bulk_write(query2, ordered=False)
+        except errors.BulkWriteError as err:
+            print(err.details)
+
+        print('Added/Updated ' + str(len(datasets)) + ' datasets')
 
 print('finished initialization')
 
