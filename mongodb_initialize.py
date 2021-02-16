@@ -259,7 +259,7 @@ if os.path.isfile(os.path.join(base_dir, 'parameters.yml')):
     if 'remotes' in param:
         remotes = param['remotes']
 
-        tethys1 = Tethys([r.dict() for r in remotes])
+        tethys1 = Tethys(remotes)
         datasets = tethys1.datasets.copy()
 
         query1 = [ReplaceOne({'dataset_id': d['dataset_id']}, d, upsert=True) for d in datasets]
