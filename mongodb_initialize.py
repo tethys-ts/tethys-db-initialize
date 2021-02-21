@@ -21,6 +21,18 @@ pd.set_option('display.max_rows', 30)
 
 base_dir = os.path.realpath(os.path.dirname(__file__))
 
+env1 = os.environ.copy()
+
+if 'station_expire' in env1:
+    station_expire = env1['station_expire']
+else:
+    station_expire = 3300
+
+if 'result_expire' in env1:
+    result_expire = env1['result_expire']
+else:
+    result_expire = 3300
+
 # try:
 #     param = os.environ.copy()
 #     database = param['DATABASE']
