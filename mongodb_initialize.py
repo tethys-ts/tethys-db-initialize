@@ -24,12 +24,12 @@ base_dir = os.path.realpath(os.path.dirname(__file__))
 env1 = os.environ.copy()
 
 if 'station_expire' in env1:
-    station_expire = env1['station_expire']
+    station_expire = int(env1['station_expire'])
 else:
     station_expire = 3300
 
 if 'result_expire' in env1:
-    result_expire = env1['result_expire']
+    result_expire = int(env1['result_expire'])
 else:
     result_expire = 3300
 
@@ -121,7 +121,7 @@ except:
 
 db[loc_coll].create_index(loc_index1, unique=True)
 db[loc_coll].create_index(loc_index2)
-db[loc_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=86400)
+db[loc_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=station_expire)
 
 
 ## license collection
@@ -198,7 +198,7 @@ except:
     db[ts1_coll].drop_indexes()
 
 db[ts1_coll].create_index(ts1_index1, unique=True)
-db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=3300)
+db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=result_expire)
 
 ## time series simulation collection
 
