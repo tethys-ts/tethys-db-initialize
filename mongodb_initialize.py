@@ -33,9 +33,11 @@ if 'result_expire' in env1:
 else:
     result_expire = 3300
 
-# try:
-#     param = os.environ.copy()
-#     database = param['DATABASE']
+try:
+    param = os.environ.copy()
+    db_service = param['db_service']
+except:
+    db_service = 'db'
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 # except:
@@ -98,7 +100,7 @@ sleep(1)
 ############################################
 ### Initialize the collections, set the schemas, and set the indexes
 
-client = MongoClient('db')
+client = MongoClient(db_service)
 # client = MongoClient('127.0.0.1')
 # client = MongoClient('db', password=root_pass, username=root_user)
 # client = MongoClient('127.0.0.1', password=root_pass, username=root_user)
