@@ -52,7 +52,7 @@ properties:
     bsonType: 'double'
     description: 'The decimal precision of the result values.'
   processing_code:
-    bsonType: 'string'
+    bsonType: 'int'
     description: 'The processing code to determine how the input data should be processed.'
   description:
     bsonType: 'string'
