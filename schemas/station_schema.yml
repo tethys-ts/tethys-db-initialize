@@ -1,5 +1,5 @@
 title: station
-required: [dataset_id, 'station_id', 'geometry', 'virtual_station']
+required: [dataset_id, 'station_id', 'geometry']
 properties:
   dataset_id:
     bsonType: 'string'
