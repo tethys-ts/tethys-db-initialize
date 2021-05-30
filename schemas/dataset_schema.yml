@@ -54,6 +54,9 @@ properties:
   processing_code:
     bsonType: 'int'
     description: 'The processing code to determine how the input data should be processed.'
+  product_description:
+    bsonType: 'string'
+    description: 'The description of the overall product. Only useful for simulation method datasets.'
   description:
     bsonType: 'string'
     description: 'The description of the dataset.'
