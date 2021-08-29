@@ -1,0 +1,30 @@
+title: results_obj_keys
+required: [dataset_id, 'station_id']
+properties:
+  dataset_id:
+    bsonType: 'string'
+    description: 'The unique dataset uuid.'
+  station_id:
+    bsonType: 'string'
+    description: 'The unique station uuid.'
+  results_object_key:
+    bsonType: array
+    description: 'The data related to the result object keys in S3.'
+    minItems: 1
+    uniqueItems: true
+    items:
+      bsonType: "object"
+      required: ["key", "bucket", "content_length", "etag", "run_date"]
+      properties:
+        key:
+          bsonType: "string"
+        bucket:
+          bsonType: "string"
+        content_length:
+          bsonType: "int"
+        etag:
+          bsonType: "string"
+        run_date:
+          bsonType: "string"
+  doc_created_date:
+    bsonType: date

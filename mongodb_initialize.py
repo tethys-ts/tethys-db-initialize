@@ -26,12 +26,12 @@ env1 = os.environ.copy()
 if 'station_expire' in env1:
     station_expire = int(env1['station_expire'])
 else:
-    station_expire = 3300
+    station_expire = 1800
 
 if 'result_expire' in env1:
     result_expire = int(env1['result_expire'])
 else:
-    result_expire = 3300
+    result_expire = 1800
 
 try:
     param = os.environ.copy()
@@ -48,6 +48,8 @@ except:
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
+rok_expire = 1800
+
 database = 'tethys'
 
 schema_dir = 'schemas'
@@ -58,6 +60,11 @@ loc_coll = 'station'
 
 loc_index1 = [('dataset_id', 1), ('station_id', 1)]
 loc_index2 = [('geometry', '2dsphere')]
+
+rok_yml = 'results_obj_keys_schema.yml'
+rok_coll = 'results_obj_keys'
+
+rok_index1 = [('dataset_id', 1), ('station_id', 1)]
 
 # license_yml = 'license_schema.yml'
 # license_coll = 'license'
@@ -111,7 +118,6 @@ db = client[database]
 print(db.list_collection_names())
 
 ## station collection
-
 with open(os.path.join(base_dir, schema_dir, loc_yml)) as yml:
     loc1 = yaml.safe_load(yml)
 
@@ -125,6 +131,19 @@ db[loc_coll].create_index(loc_index1, unique=True)
 db[loc_coll].create_index(loc_index2)
 db[loc_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=station_expire)
 
+
+## results_obj_keys collection
+with open(os.path.join(base_dir, schema_dir, rok_yml)) as yml:
+    rok1 = yaml.safe_load(yml)
+
+try:
+    db.create_collection(rok_coll, validator={'$jsonSchema': rok1})
+except:
+    db.command('collMod', rok_coll, validator= {'$jsonSchema': rok1})
+    db[rok_coll].drop_indexes()
+
+db[rok_coll].create_index(rok_index1, unique=True)
+db[rok_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=rok_expire)
 
 ## license collection
 
