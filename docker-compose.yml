@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  db-int:
+  db:
     image: mongo:4.2-bionic
     command: --wiredTigerJournalCompressor zstd --wiredTigerCollectionBlockCompressor zstd
     ports:
       - "27017:27017"
   db-initialize:
-    image: tethysts/tethys-db-initialize:1.3
+    image: tethysts/tethys-db-initialize:1.4
     environment:
-      db_service: db-int
+      db_service: db
     volumes:
-        - "/media/sdb1/Projects/git/tethys/tethys-db-initialize/parameters.yml:/parameters.yml"
+        - "/media/sdb1/git/tethys/tethys-db-initialize/parameters.yml:/parameters.yml"
     depends_on:
       - "db"
   # updater:

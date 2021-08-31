@@ -41,7 +41,31 @@ properties:
     description: 'The legally required attribution text to be distributed with the data defined by the owner.'
   result_type:
     bsonType: 'string'
-    description: 'The collection where the results will be saved.'
+    description: 'The collection where the results will be saved. DEPRECATED'
+  spatial_distribution:
+    bsonType: 'string'
+    description: 'This describes how the spatial data are distributed. Either sparse or grid.'
+  geometry_type:
+    bsonType: 'string'
+    description: 'This describes how the spatial dimensions are stored. Point, Line, Polygon, or Collection. Follows the OGC spatial data types.'
+  grouping:
+    bsonType: 'string'
+    description: 'This describes how the staions and the associated data are grouped. Either none or blocks.'
+  extent:
+    bsonType: 'object'
+    description: 'GeoJson of the geometry extent of the dataset.'
+    required: [type, coordinates]
+    properties:
+      type:
+        bsonType: string
+      coordinates:
+        bsonType: array
+  time_range:
+    bsonType: object
+    description: 'The maximum time range of the dataset.'
+  spatial_resolution:
+    bsonType: 'double'
+    description: 'The spatial resolution in decimal degrees if the spatial_distribution is grid.'
   cf_standard_name:
     bsonType: 'string'
     description: 'The CF conventions standard name for the parameter.'
@@ -60,6 +84,9 @@ properties:
   description:
     bsonType: 'string'
     description: 'The description of the dataset.'
+  version:
+    bsonType: 'int'
+    description: 'The version of the metadata structure.'
   properties:
     bsonType: 'object'
     description: 'Any additional dataset specific properties.'
