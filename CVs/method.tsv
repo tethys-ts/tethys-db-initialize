@@ -1,8 +1,8 @@
-name	definition	hydro
-derivation	A method for creating results by deriving them from other results.	NA
-estimation	A method for creating results by estimation or professional judgement.	NA
-field_activity	A method for performing an activity in the field at or on a sampling feature.	Manual Field
-simulation	A method for creating results by running a simulation model.	NA
-sample_analysis	A method for ex situ analysis of a sample using an instrument, typically in a laboratory, for the purpose of measuring properties of a sample.	Manual Lab
-sensor_recording	A method for creating results by automatic sensor measurements.	Recorder
-forecast  A type of simulation to predict the future. NA
+name	definition
+derivation	A method for creating results by simple calculations from field activities, sample analyses, or sensor recordings.
+estimation	A method for creating results by rough approximation or professional judgement. This implies that it does not use an analytical or numerical model.
+field_activity	A method for creating results by performing an activity in the field at or on a sampling feature.
+simulation	A method for creating results by running an analytical or numerical model. This is generally more complex and/or more uncertain than derivations.
+sample_analysis	A method for ex situ analysis of a sample using an instrument, typically in a laboratory, for the purpose of measuring properties of a sample.
+sensor_recording	A method for creating results by automatic sensor measurements.
+forecast	A type of simulation to predict the future.
