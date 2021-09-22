@@ -48,6 +48,8 @@ except:
 #     root_user = param['MONGO_INITDB_ROOT_USERNAME']
 #     root_pass = param['MONGO_INITDB_ROOT_PASSWORD']
 
+# db_service = '127.0.0.1'
+
 rok_expire = 1800
 
 database = 'tethys'
