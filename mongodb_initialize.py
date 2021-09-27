@@ -6,12 +6,11 @@ Created on Sat Nov 16 08:04:46 2019
 """
 import os
 import pandas as pd
-import pymongo
 import yaml
 import json
 from time import sleep
-from tethysts import Tethys
-from pymongo import MongoClient, database, InsertOne, DeleteOne, ReplaceOne, UpdateOne, errors
+# from tethysts import Tethys
+from pymongo import MongoClient, InsertOne, DeleteOne, ReplaceOne, UpdateOne, errors
 
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 30)
@@ -286,32 +285,32 @@ print(db.list_collection_names())
 ####################################
 ### Load in datasets and remotes
 
-if os.path.isfile(os.path.join(base_dir, 'parameters.yml')):
+# if os.path.isfile(os.path.join(base_dir, 'parameters.yml')):
 
-    with open(os.path.join(base_dir, 'parameters.yml')) as param:
-        param = yaml.safe_load(param)
+#     with open(os.path.join(base_dir, 'parameters.yml')) as param:
+#         param = yaml.safe_load(param)
 
-    if 'remotes' in param:
-        remotes = param['remotes']
+#     if 'remotes' in param:
+#         remotes = param['remotes']
 
-        tethys1 = Tethys(remotes)
-        datasets = tethys1.datasets.copy()
+#         tethys1 = Tethys(remotes)
+#         datasets = tethys1.datasets.copy()
 
-        query1 = [ReplaceOne({'dataset_id': d['dataset_id']}, d, upsert=True) for d in datasets]
+#         query1 = [ReplaceOne({'dataset_id': d['dataset_id']}, d, upsert=True) for d in datasets]
 
-        try:
-            ds_ids = db['dataset'].bulk_write(query1, ordered=False)
-        except errors.BulkWriteError as err:
-            print(err.details)
+#         try:
+#             ds_ids = db['dataset'].bulk_write(query1, ordered=False)
+#         except errors.BulkWriteError as err:
+#             print(err.details)
 
-        query2 = [ReplaceOne({'dataset_id': d}, r, upsert=True) for d, r in tethys1._remotes.items()]
+#         query2 = [ReplaceOne({'dataset_id': d}, r, upsert=True) for d, r in tethys1._remotes.items()]
 
-        try:
-            ds_remotes = db['remotes'].bulk_write(query2, ordered=False)
-        except errors.BulkWriteError as err:
-            print(err.details)
+#         try:
+#             ds_remotes = db['remotes'].bulk_write(query2, ordered=False)
+#         except errors.BulkWriteError as err:
+#             print(err.details)
 
-        print('Added/Updated ' + str(len(datasets)) + ' datasets')
+#         print('Added/Updated ' + str(len(datasets)) + ' datasets')
 
 print('finished initialization')
 

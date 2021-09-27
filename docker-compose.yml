@@ -6,19 +6,9 @@ services:
     command: --wiredTigerJournalCompressor zstd --wiredTigerCollectionBlockCompressor zstd
     ports:
       - "27017:27017"
-  db-initialize:
-    image: tethysts/tethys-db-initialize:1.4
+  db-init:
+    image: tethysts/tethys-db-initialize:1.5
     environment:
       db_service: db
-    volumes:
-        - "/media/sdb1/git/tethys/tethys-db-initialize/parameters.yml:/parameters.yml"
     depends_on:
       - "db"
-  # updater:
-  #   image: tethys-updater
-  #   environment:
-  #     DATABASE: tethys
-  #     RW_USERNAME: readwriter
-  #     RW_PASSWORD: readwriter
-  #   depends_on:
-  #     - "db-initialize"
