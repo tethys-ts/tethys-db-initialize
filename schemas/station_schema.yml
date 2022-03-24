@@ -35,3 +35,16 @@ properties:
     bsonType: date
   doc_created_date:
     bsonType: date
+  heights:
+    bsonType: array
+  bands:
+    bsonType: array
+  time_range:
+    bsonType: object
+    description: 'The maximum time range of the dataset.'
+  content_length:
+    bsonType: 'int'
+  dimensions:
+    bsonType: object
+  stats:
+    bsonType: object
