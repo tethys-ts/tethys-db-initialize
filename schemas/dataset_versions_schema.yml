@@ -1,0 +1,17 @@
+required: ['dataset_id', 'version_date']
+properties:
+  dataset_id:
+    bsonType: 'string'
+    description: 'The unique dataset uuid.'
+  version_date:
+    bsonType: date
+  modified_date:
+    bsonType: date
+  name:
+    bsonType: 'string'
+  description:
+    bsonType: 'string'
+  doi:
+    bsonType: 'string'
+  doc_created_date:
+    bsonType: date

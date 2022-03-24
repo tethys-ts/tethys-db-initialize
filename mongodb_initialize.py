@@ -37,6 +37,11 @@ if 'chunks_expire' in env1:
 else:
     chunks_expire = 1800
 
+if 'versions_expire' in env1:
+    versions_expire = int(env1['versions_expire'])
+else:
+    versions_expire = 3600
+
 try:
     param = os.environ.copy()
     db_service = param['db_service']
@@ -99,6 +104,11 @@ ts1_yml = 'results_schema.yml'
 ts1_coll = 'results'
 
 ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('chunk_id', 1), ('version_date', 1)]
+
+versions_yml = 'dataset_versions_schema.yml'
+versions_coll = 'versions'
+
+versions_index1 = [('dataset_id', 1), ('version_date', 1)]
 
 # ts2_yml = 'result_simulation_schema.yml'
 # ts2_coll = 'time_series_simulation'
@@ -169,6 +179,19 @@ except:
     db[log_coll].drop_indexes()
 
 db[log_coll].create_index(log_index1)
+
+## versions collection
+
+with open(os.path.join(base_dir, schema_dir, versions_yml)) as yml:
+    versions1 = yaml.safe_load(yml)
+
+try:
+    db.create_collection(versions_coll, validator={'$jsonSchema': versions1})
+except:
+    db.command('collMod', versions_coll, validator= {'$jsonSchema': versions1})
+    db[versions_coll].drop_indexes()
+
+db[versions_coll].create_index(versions_index1, expireAfterSeconds=versions_expire)
 
 ## loc-dataset collection
 

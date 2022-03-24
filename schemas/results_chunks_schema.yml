@@ -1,4 +1,4 @@
-required: [chunk_id, station_id, dataset_id, version_date, key, chunk_hash, height, chunk_day, n_times, from_date, to_date]
+required: [chunk_id, station_id, dataset_id, version_date, key]
 properties:
   chunk_id:
     bsonType: 'string'
