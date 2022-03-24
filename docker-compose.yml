@@ -2,12 +2,12 @@ version: '3'
 
 services:
   db:
-    image: mongo:4.2-bionic
+    image: mongo:5.0-focal
     command: --wiredTigerJournalCompressor zstd --wiredTigerCollectionBlockCompressor zstd
     ports:
       - "27017:27017"
   db-init:
-    image: tethysts/tethys-db-initialize:1.5
+    image: tethysts/tethys-db-initialize:1.6
     environment:
       db_service: db
     depends_on:

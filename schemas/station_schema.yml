@@ -16,9 +16,6 @@ properties:
   osm_id:
     bsonType: 'int'
     description: 'The OpenStreetMap ID if one exists.'
-  virtual_station:
-    bsonType: 'bool'
-    description: 'Does the station not have a physical location? For example, is this location from a numerical model with gridded output?'
   geometry:
     bsonType: 'object'
     description: 'GeoJson of the geometry location.'
@@ -31,23 +28,6 @@ properties:
   altitude:
     bsonType: 'double'
     description: 'Altitude of the station.'
-  stats:
-    bsonType: object
-    description: 'Statistics related to the results.'
-  results_object_key:
-    bsonType: "object"
-    required: ["key", "bucket", "content_length", "etag", "run_date"]
-    properties:
-      key:
-        bsonType: "string"
-      bucket:
-        bsonType: "string"
-      content_length:
-        bsonType: "int"
-      etag:
-        bsonType: "string"
-      run_date:
-        bsonType: "string"
   properties:
     bsonType: 'object'
     description: 'Any additional station and operator specific properties.'

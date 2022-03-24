@@ -1,0 +1,30 @@
+required: [chunk_id, station_id, dataset_id, version_date, key, chunk_hash, height, chunk_day, n_times, from_date, to_date]
+properties:
+  chunk_id:
+    bsonType: 'string'
+  key:
+    bsonType: 'string'
+  content_length:
+    bsonType: 'int'
+  version_date:
+    bsonType: date
+  chunk_hash:
+    bsonType: 'string'
+  dataset_id:
+    bsonType: 'string'
+  station_id:
+    bsonType: 'string'
+  height:
+    bsonType: 'int'
+  chunk_day:
+    bsonType: 'int'
+  band:
+    bsonType: 'int'
+  n_times:
+    bsonType: 'int'
+  from_date:
+    bsonType: date
+  to_date:
+    bsonType: date
+  doc_created_date:
+    bsonType: date

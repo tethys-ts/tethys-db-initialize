@@ -27,10 +27,15 @@ if 'station_expire' in env1:
 else:
     station_expire = 1800
 
-if 'result_expire' in env1:
-    result_expire = int(env1['result_expire'])
+if 'results_expire' in env1:
+    results_expire = int(env1['results_expire'])
 else:
-    result_expire = 1800
+    results_expire = 1800
+
+if 'chunks_expire' in env1:
+    chunks_expire = int(env1['chunks_expire'])
+else:
+    chunks_expire = 1800
 
 try:
     param = os.environ.copy()
@@ -49,8 +54,6 @@ except:
 
 # db_service = '127.0.0.1'
 
-rok_expire = 1800
-
 database = 'tethys'
 
 schema_dir = 'schemas'
@@ -62,11 +65,10 @@ loc_coll = 'station'
 loc_index1 = [('dataset_id', 1), ('station_id', 1)]
 loc_index2 = [('geometry', '2dsphere')]
 
-rok_yml = 'results_obj_keys_schema.yml'
-rok_coll = 'results_obj_keys'
+chunks_yml = 'results_chunks_schema.yml'
+chunks_coll = 'results_chunks'
 
-rok_index1 = [('dataset_id', 1), ('station_id', 1)]
-
+chunks_index1 = [('dataset_id', 1), ('station_id', 1), ('chunk_id', 1), ('version_date', 1)]
 # license_yml = 'license_schema.yml'
 # license_coll = 'license'
 #
@@ -93,10 +95,10 @@ remotes_index1 = [('dataset_id', 1)]
 #
 # loc_dataset_index1 = [('station_id', 1), ('dataset_id', 1)]
 
-ts1_yml = 'result_schema.yml'
-ts1_coll = 'result'
+ts1_yml = 'results_schema.yml'
+ts1_coll = 'results'
 
-ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('run_date', 1)]
+ts1_index1 = [('dataset_id', 1), ('station_id', 1), ('chunk_id', 1), ('version_date', 1)]
 
 # ts2_yml = 'result_simulation_schema.yml'
 # ts2_coll = 'time_series_simulation'
@@ -134,17 +136,17 @@ db[loc_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=station_
 
 
 ## results_obj_keys collection
-with open(os.path.join(base_dir, schema_dir, rok_yml)) as yml:
-    rok1 = yaml.safe_load(yml)
+with open(os.path.join(base_dir, schema_dir, chunks_yml)) as yml:
+    chunks1 = yaml.safe_load(yml)
 
 try:
-    db.create_collection(rok_coll, validator={'$jsonSchema': rok1})
+    db.create_collection(chunks_coll, validator={'$jsonSchema': chunks1})
 except:
-    db.command('collMod', rok_coll, validator= {'$jsonSchema': rok1})
-    db[rok_coll].drop_indexes()
+    db.command('collMod', chunks_coll, validator= {'$jsonSchema': chunks1})
+    db[chunks_coll].drop_indexes()
 
-db[rok_coll].create_index(rok_index1, unique=True)
-db[rok_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=rok_expire)
+db[chunks_coll].create_index(chunks_index1, unique=True)
+db[chunks_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=chunks_expire)
 
 ## license collection
 
@@ -220,7 +222,7 @@ except:
     db[ts1_coll].drop_indexes()
 
 db[ts1_coll].create_index(ts1_index1, unique=True)
-db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=result_expire)
+db[ts1_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=results_expire)
 
 ## time series simulation collection
 

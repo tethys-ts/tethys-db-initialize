@@ -1,17 +1,19 @@
-required: [station_id, dataset_id, run_date, result]
+required: [chunk_id, station_id, dataset_id, version_date, results]
 properties:
+  chunk_id:
+    bsonType: 'string'
   station_id:
     bsonType: 'string'
     description: 'The unique station uuid.'
   dataset_id:
     bsonType: 'string'
     description: 'the dataset id from the dataset collection.'
-  run_date:
+  version_date:
     bsonType: 'date'
-    description: 'The simulation run datetime.'
-  result:
+    description: 'The simulation version datetime.'
+  results:
     bsonType: binData
-    description: 'The result as a binary zstd compressed netcdf.'
+    description: 'The results as a binary zstd compressed netcdf.'
   modified_date:
     bsonType: date
   doc_created_date:

@@ -1,5 +1,5 @@
 title: remotes
-required: [dataset_id, bucket, connection_config]
+required: [dataset_id, bucket, version]
 properties:
   dataset_id:
     bsonType: 'string'
@@ -19,6 +19,12 @@ properties:
   connection_config:
     bsonType: [object, string]
     description: 'The S3 connection data.'
+  public_url:
+    bsonType: string
+  version:
+    bsonType: 'int'
+  description:
+    bsonType: 'string'
     # required: [service_name, endpoint_url, aws_access_key_id, aws_secret_access_key]
     # properties:
     #   service_name:
