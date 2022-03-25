@@ -191,7 +191,8 @@ except:
     db.command('collMod', versions_coll, validator= {'$jsonSchema': versions1})
     db[versions_coll].drop_indexes()
 
-db[versions_coll].create_index(versions_index1, expireAfterSeconds=versions_expire)
+db[versions_coll].create_index(versions_index1, unique=True)
+db[versions_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=station_expire)
 
 ## loc-dataset collection
 
