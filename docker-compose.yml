@@ -7,7 +7,7 @@ services:
     ports:
       - "27017:27017"
   db-init:
-    image: tethysts/tethys-db-initialize:1.6
+    image: tethysts/tethys-db-initialize:1.7
     environment:
       db_service: db
     depends_on:

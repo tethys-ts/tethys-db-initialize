@@ -1,5 +1,5 @@
 title: station
-required: [dataset_id, 'station_id', 'geometry']
+required: [dataset_id, 'station_id', 'geometry', 'version_date']
 properties:
   dataset_id:
     bsonType: 'string'
@@ -48,3 +48,5 @@ properties:
     bsonType: object
   stats:
     bsonType: object
+  version_date:
+    bsonType: date

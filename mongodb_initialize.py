@@ -40,7 +40,7 @@ else:
 if 'versions_expire' in env1:
     versions_expire = int(env1['versions_expire'])
 else:
-    versions_expire = 3600
+    versions_expire = 1800
 
 try:
     param = os.environ.copy()
@@ -67,13 +67,13 @@ cv_dir = 'CVs'
 loc_yml = 'station_schema.yml'
 loc_coll = 'station'
 
-loc_index1 = [('dataset_id', 1), ('station_id', 1)]
+loc_index1 = [('dataset_id', 1), ('version_date', 1), ('station_id', 1)]
 loc_index2 = [('geometry', '2dsphere')]
 
 chunks_yml = 'results_chunks_schema.yml'
 chunks_coll = 'results_chunks'
 
-chunks_index1 = [('dataset_id', 1), ('station_id', 1), ('chunk_id', 1), ('version_date', 1)]
+chunks_index1 = [('dataset_id', 1), ('version_date', 1), ('station_id', 1), ('chunk_id', 1)]
 # license_yml = 'license_schema.yml'
 # license_coll = 'license'
 #
@@ -193,19 +193,6 @@ except:
 
 db[versions_coll].create_index(versions_index1, unique=True)
 db[versions_coll].create_index([('doc_created_date', 1)], expireAfterSeconds=station_expire)
-
-## loc-dataset collection
-
-# with open(os.path.join(base_dir, schema_dir, loc_dataset_yml)) as yml:
-#     loc_dataset1 = yaml.safe_load(yml)
-#
-# try:
-#     db.create_collection(loc_dataset_coll, validator={'$jsonSchema': loc_dataset1})
-# except:
-#     db.command('collMod', loc_dataset_coll, validator= {'$jsonSchema': loc_dataset1})
-#     db[loc_dataset_coll].drop_indexes()
-#
-# db[loc_dataset_coll].create_index(loc_dataset_index1, unique=True)
 
 ## dataset collection
 
